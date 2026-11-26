@@ -41,8 +41,12 @@ INSTALLED_APPS = [
     # third-party apps
     'rest_framework',
     'django_filters',
+    'phonenumber_field',
+    'rest_framework.authtoken', #token authentication
+
     # local apps
     'ticket',
+    'user_auth',
     
 ]
 
@@ -139,4 +143,13 @@ MAILERS = {
     'default': {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
+}
+
+# custom user model
+AUTH_USER_MODEL = 'user_auth.User'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
 }
